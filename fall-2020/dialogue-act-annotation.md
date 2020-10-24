@@ -135,3 +135,14 @@ After doing this, I got the following distribution:
 ---
 
 I trained word embeddings using Gensim Word2Vec. That's it. I think I'm done with generating the dataset and need to study the neural architecture. There is a reference describing the model, but unfortunately it's in French ("Annotation en actes de dialogue pour les conversations d'assistance en ligne" by Auguste, Perrotin, and Nasr).
+
+---
+
+The French paper was based on [Hierarchical Attention Networks for Document Classification](https://www.cs.cmu.edu/~./hovy/papers/16HLT-hierarchical-attention-networks.pdf) so I'm working from that. Currently I'm trying to get a working model in PyTorch using the original hierarchy words -> sentences -> document hierarchy with [IMDB reviews](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews) and maybe the [Yelp reviews dataset](https://www.yelp.com/dataset) if I have time. Just finished the preprocessing steps, which I think can carry over to the dialogue act work:
+
+1. Strip HTML tags and other weird characters from the reviews (this is similar to having to remove dialogue-specific notes from the transcripts)
+2. Divide the review into sentences, lowercase, strip punctuation.
+3. Tokenize each sentence into words and lemmatize.
+4. Remove the top and bottom 10% of words.
+
+I'm going to learn embeddings as part of the model for now, but I'm interested in trying pretrained embeddings at some point.
