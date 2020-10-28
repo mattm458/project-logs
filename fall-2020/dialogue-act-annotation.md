@@ -146,3 +146,17 @@ The French paper was based on [Hierarchical Attention Networks for Document Clas
 4. Remove the top and bottom 10% of words.
 
 I'm going to learn embeddings as part of the model for now, but I'm interested in trying pretrained embeddings at some point.
+
+---
+
+I now have a working model and am customizing it to work with as a document tagger. As a quick overview of the architectural changes between a document tagger and a turn tagger, this is a document tagger:
+
+![Document tagger](img/da-document-tagger.png)
+
+And this is what I think the turn tagger needs to be:
+
+![Turn tagger](img/da-turn-tagger.png)
+
+This has added a few new requirements, specifically that I have to restructure my dataset. I had initially saved it as a loose collection of turns, but now I need to group them by dialogue.
+
+The paper that originally implemented this algorithm use GloVE pretrained word embeddings, so I am doing that too. I think it would be interesting to try training embeddings as part of this, or trying different pretrained embeddings.
