@@ -117,3 +117,127 @@ Results obtained from an SVM predicting one of four quadrants for the emotion. T
 * Degree of voice breaks
 * Fraction of locally unvoiced frames
 * Mean/std deviation of 12 MFCCs over the audio sample
+
+---
+
+Here are some things I'm trying:
+
+Raw dataset, split into 4 quadrants:
+
+```
+              precision    recall  f1-score   support
+
+           1       0.51      0.84      0.63       595
+           2       0.49      0.30      0.37       369
+           3       0.38      0.13      0.20       180
+           4       0.49      0.19      0.27       189
+
+    accuracy                           0.50      1333
+   macro avg       0.47      0.36      0.37      1333
+weighted avg       0.48      0.50      0.45      1333
+```
+
+Raw dataset, stratified train/test split:
+
+```
+              precision    recall  f1-score   support
+
+           1       0.49      0.82      0.62       589
+           2       0.47      0.28      0.35       400
+           3       0.32      0.09      0.14       172
+           4       0.48      0.18      0.26       172
+
+    accuracy                           0.48      1333
+   macro avg       0.44      0.34      0.34      1333
+weighted avg       0.46      0.48      0.43      1333
+```
+
+Recentered dataset:
+
+```
+All
+              precision    recall  f1-score   support
+
+           1       0.44      0.67      0.53       451
+           2       0.44      0.41      0.42       345
+           3       0.35      0.23      0.28       252
+           4       0.46      0.25      0.33       285
+
+    accuracy                           0.43      1333
+   macro avg       0.42      0.39      0.39      1333
+weighted avg       0.43      0.43      0.41      1333
+```
+
+Recentered stratified dataset:
+
+```
+              precision    recall  f1-score   support
+
+           1       0.44      0.68      0.54       456
+           2       0.47      0.38      0.42       374
+           3       0.37      0.27      0.31       245
+           4       0.41      0.25      0.31       258
+
+    accuracy                           0.44      1333
+   macro avg       0.42      0.39      0.39      1333
+weighted avg       0.43      0.44      0.42      1333
+```
+
+Positive/neutral/negative buckets
+
+```
+              precision    recall  f1-score   support
+
+           0       0.44      0.47      0.45       421
+           1       0.46      0.47      0.46       440
+           2       0.51      0.47      0.49       472
+
+    accuracy                           0.47      1333
+   macro avg       0.47      0.47      0.47      1333
+weighted avg       0.47      0.47      0.47      1333
+```
+
+Stratified positive/neutral/negative buckets
+
+```
+All
+              precision    recall  f1-score   support
+
+           0       0.50      0.48      0.49       441
+           1       0.47      0.43      0.45       439
+           2       0.48      0.54      0.51       453
+
+    accuracy                           0.48      1333
+   macro avg       0.48      0.48      0.48      1333
+weighted avg       0.48      0.48      0.48      1333
+```
+
+Stratified positive/neutral/negative buckets for conversations only
+
+```
+All
+              precision    recall  f1-score   support
+
+           0       0.32      0.39      0.35       134
+           1       0.39      0.15      0.22       146
+           2       0.39      0.52      0.45       168
+
+    accuracy                           0.36       448
+   macro avg       0.36      0.35      0.34       448
+weighted avg       0.37      0.36      0.34       448
+```
+
+---
+
+Some interesting papers:
+
+"Speech Sentiment Analysis via Pre-Trained Features from End-To-End ASR Models" by Zhiyun et al., based on an annotated Switchboard corpus developed in "A Large Scale Speech Sentiment Corpus" by Chen et al. This is really interesting because they added emotion annotations to Switchboard, which would be really useful to get ahold of. However, their method is much more complex than ours.
+
+Their results are as follows:
+![ASR results](img/asr-results.png)
+
+This is interesting because our best unweighted accuracy (50%) is better than their worst, but their worst weighted accuracy is better than ours (48%).
+
+Also, I found "Speech emotion recognition: Emotional models, databases, features,
+preprocessing methods, supporting modalities, and classifiers" by Akçay and Oğuz. It's a really interesting survey of the current state of emotion prediction from collected audio datasets and gives me a lot of other approaches to look into.
+
