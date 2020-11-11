@@ -241,3 +241,10 @@ This is interesting because our best unweighted accuracy (50%) is better than th
 Also, I found "Speech emotion recognition: Emotional models, databases, features,
 preprocessing methods, supporting modalities, and classifiers" by Akçay and Oğuz. It's a really interesting survey of the current state of emotion prediction from collected audio datasets and gives me a lot of other approaches to look into.
 
+---
+
+Finally looking into this more. I was able to get the Switchboard emotion annotation corpus and will look into it over the next week.
+
+I'm trying to do some entrainment analysis similar to what I'm doing in the dialogue act prediction work. Like the dialogue act prediction work, I am seeing possibly unusual results that I think are either pointing to a flaw in my methodology or feature collection procedure.
+
+Working off of most of what I've established before, I decided to focus on convergence and determine if there are statistically significant differences between the first and second half of each conversation. Looking at the entire dataset I've collected so far, I'm seeing significant differences only in jitter. I really want to review what I'm doing with the switchboard corpus before moving forward on this, just because that's the only dataset I have where someone else performed the same analysis.

@@ -160,3 +160,82 @@ And this is what I think the turn tagger needs to be:
 This has added a few new requirements, specifically that I have to restructure my dataset. I had initially saved it as a loose collection of turns, but now I need to group them by dialogue.
 
 The paper that originally implemented this algorithm use GloVE pretrained word embeddings, so I am doing that too. I think it would be interesting to try training embeddings as part of this, or trying different pretrained embeddings.
+
+---
+
+The model is working pretty well. I'm getting results roughly comparable to those in the paper.
+
+Mine (3 classes):
+```
+              precision    recall  f1-score   support
+
+     bac+agr       0.86      0.80      0.83      2980
+     sta+opi       0.90      0.92      0.91      6638
+       other       0.61      0.63      0.62      2092
+
+    accuracy                           0.84     11710
+   macro avg       0.79      0.78      0.79     11710
+weighted avg       0.84      0.84      0.84     11710
+```
+Paper (3 classes):
+```
+              precision    recall  f1-score
+
+     bac+agr       0.88      0.85      0.86
+     sta+opi       0.84      0.92      0.87
+       other       0.62      0.49      0.55
+```
+
+Mine (4 classes):
+```
+backchannel', 'opinion', 'other', 'statement
+              precision    recall  f1-score   support
+
+         bac       0.76      0.86      0.81      2734
+         sta       0.77      0.89      0.82      4848
+         opi       0.59      0.43      0.50      1514
+         oth       0.69      0.52      0.59      2614
+
+    accuracy                           0.74     11710
+   macro avg       0.70      0.67      0.68     11710
+weighted avg       0.73      0.74      0.73     11710
+```
+
+Paper (4 classes):
+```
+              precision    recall  f1-score
+
+         bac       0.78      0.84      0.81
+         sta       0.78      0.73      0.75
+         opi       0.47      0.61      0.53
+       other       0.71      0.68      0.69
+```
+
+---
+
+I'm setting the model aside for now to focus on audio feature extraction and trying to recreate the overall convergence results they found in the paper.
+
+Since I'm ignoring the model for now, I'm focusing on the observation that they found statistically significant convergence in both energy and rate metrics. Here's how I'm retrieving and processing each of the metrics:
+
+1. Load a .wav file. Determine the session and speaker ID from the filename.
+2. Load the corresponding transcription.
+3. Loop through each turn in the transcription. For each turn, use Praat/Parselmouth to extract:
+	* Mean pitch.
+	* Mean energy.
+	* Rate
+4. Group turns by session ID and participant ID.
+5. For each session/participant:
+	1. Determine the midpoint and divide the conversation in half.
+	2. Determine the mean of each metric in each half.
+	3. Compute a distance metric (abs(half<sub>1</sub> - half<sub>2</sub>))
+
+There are some specific things this paper does that differs from what I've seen in other papers:
+
+1. Energy is normalized. The paper divides each instance of energy by the total energy for the session.
+2. Energy is also computed as the mean over a series of temporal windows, ignoring windows where the probability of voicing is above .65. I am not doing this yet.
+3. Rate is calculated by an expected turn length based on estimating word durations and comparing it to how long the turn actually took. I used a simpler approach I've seen in speech lab papers, where we divide the number of syllables in each turn by its length to get syllables per second.
+
+Unfortunately I'm not able to 
+The paper also takes a more complex approach to calculating the statistical significance between turns. At the moment, I'm only doing a paied t-test like what some earlier speech lab papers do. Based on this, I'm seeing a statistically significant difference in pitch but not energy or rate.
+
+On top of that, I'm actually seeing an increase in distance between pitch and rate across the two conversation halves, not a decrease. So now I'm thinking maybe there's something wrong with how I'm collecting the metrics. Still looking into this.
