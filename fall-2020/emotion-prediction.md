@@ -248,3 +248,22 @@ Finally looking into this more. I was able to get the Switchboard emotion annota
 I'm trying to do some entrainment analysis similar to what I'm doing in the dialogue act prediction work. Like the dialogue act prediction work, I am seeing possibly unusual results that I think are either pointing to a flaw in my methodology or feature collection procedure.
 
 Working off of most of what I've established before, I decided to focus on convergence and determine if there are statistically significant differences between the first and second half of each conversation. Looking at the entire dataset I've collected so far, I'm seeing significant differences only in jitter. I really want to review what I'm doing with the switchboard corpus before moving forward on this, just because that's the only dataset I have where someone else performed the same analysis.
+
+---
+
+I'm a little relieved because I found out my feature extraction step isn't correct. I am now correcting the feature extraction code.
+
+To illustrate the difference, this is what I was doing:
+
+1. Load a wav file containing the entire turn.
+2. Extract audio features over the entire turn.
+
+This is what I should be doing:
+
+1. Load the wav file for a speaker over the entire conversation.
+2. For each turn, extract the audio features for each IPU within the turn.
+3. Compute the average (or weighted average) of each metric across all turn IPUs.
+
+As an additional step, jitter and shimmer should only be extracted over voiced intervals. When calculating them, all unvoiced intervals should be cut from the audio samples and all voiced intervals concatenated together.
+
+I am reworking feature extraction for both this and the dialogue act prediction work. I'm hoping weird features was why I wasn't seeing results before.
