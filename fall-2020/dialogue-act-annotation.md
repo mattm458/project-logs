@@ -238,4 +238,30 @@ There are some specific things this paper does that differs from what I've seen 
 Unfortunately I'm not able to 
 The paper also takes a more complex approach to calculating the statistical significance between turns. At the moment, I'm only doing a paied t-test like what some earlier speech lab papers do. Based on this, I'm seeing a statistically significant difference in pitch but not energy or rate.
 
-On top of that, I'm actually seeing an increase in distance between pitch and rate across the two conversation halves, not a decrease. So now I'm thinking maybe there's something wrong with how I'm collecting the metrics. Still looking into this.
+On top of that, I'm actually seeing an increase in distance between pitch and rate across the two conversation halves, not a decrease. So now I'm thinking maybe there's something wrong with how I'm collecting the featires. Still looking into this.
+
+---
+
+Making some progress on replication. Here are my results compared with theirs for all data, all manually tagged data, and all manually tagged specific dialogue acts. Similarities between the significance of my results versus their results are bolded:
+
+| Feature                               | Estimate (theirs) | P-value (theirs)    | Estimate (mine) | P-value (mine          |
+|---------------------------------------|-------------------|---------------------|-----------------|------------------------|
+| **Energy (all)**                      | -0.063        | **7 * 10<sup>-7</sup>** |-0.0004       | **1.2 * -10<sup>-6</sup>** |
+| **Pitch (all)**                           | -0.044            | **0.49**                | 0.248           | **0.757**                  |
+| **Rate (all)**                           | -0.049            | **0.046**               | -3.942          | **0.018**                  |
+| **Energy (manually tagged)**              | -0.054            | **0.026**               | -0.0003         | **0.003**                  |
+| **Pitch (manually tagged)**               | -0.057            | **0.158**               | 0.601           | **0.566**                  |
+| Rate (manually tagged)                | -0.106            | 0.026               | -0.763          | 0.09                   |
+| Energy (manually tagged backchannels) | -0.082            | 0.045               | -0.0002         | 0.13                   |
+| **Pitch (manually tagged backchannels)**  | 0.043             | **0.491**               | 2.505           | **0.174**                  |
+| **Energy (manually tagged statements)**   | -0.071            | **0.032**                | -0.0007         | **0.000473**               |
+| **Pitch (manually tagged statements)**    | -0.025            | **0.653**               | 0.185           | **0.884**                  |
+| Rate (manually tagged statements)     | -0.123            | 0.012               | .305            | 0.679                  |
+| **Energy (manually tagged opinions)**     | -0.061            | **0.627**               | -0.0002         | **0.367**                  |
+| **Pitch (manually tagged opinions)**      | -0.032            | **0.552**               | 0.923           | **0.684**                  |
+| **Rate (manually tagged opinions)**       | -0.096            | **0.115**               | -0.647          | **0.59**                   |
+
+
+Some possible explanation for the major discrepancies:
+* I am not calculating rate using the expected word length method that they use.
+* They are applying a normalizing factor to energy based on the speaker's overall energy for the conversation. I am not doing this yet, which could explain why my estimates are smaller than theirs (their energy values are larger) and why energy isn't significant in backchannels.
