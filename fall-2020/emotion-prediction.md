@@ -267,3 +267,35 @@ This is what I should be doing:
 As an additional step, jitter and shimmer should only be extracted over voiced intervals. When calculating them, all unvoiced intervals should be cut from the audio samples and all voiced intervals concatenated together.
 
 I am reworking feature extraction for both this and the dialogue act prediction work. I'm hoping weird features was why I wasn't seeing results before.
+
+---
+
+Some preliminary results from looking at global convergence with the new features:
+
+|                  |   difference |   p-value |
+|:-----------------|-------------:|----------:|
+| energy           | -1.53175e-05 |  0.808449 |
+| pitch_mean       |  5.20996     |  0.516012 |
+| pitch_std        | -2.47153     |  0.266549 |
+| pitch_min        | -0.473686    |  0.931822 |
+| pitch_max        | -9.43837     |  0.424297 |
+| intensity_mean   | -0.187144    |  0.852269 |
+| intensity_std    |  0.13581     |  0.577361 |
+| intensity_min    | -0.575321    |  0.501805 |
+| intensity_max    |  0.139       |  0.896603 |
+| jitter           | -0.00167943  |  0.175146 |
+| shimmer          | -0.00270145  |  0.459646 |
+| harmonicity_mean | -0.308786    |  0.556069 |
+| harmonicity_std  | -0.0939209   |  0.509731 |
+| harmonicity_min  |  4.58856     |  0.548418 |
+| harmonicity_max  |  0.305905    |  0.602327 |
+
+No significance in the difference, but based on other work with the dialogue act annotation work I'd expect a few of the features to have converged, at least energy.
+
+Some things I want to try next:
+
+* Extract conversations only (not games) and do the same analysis. Maybe some convergence will happen there that didn't before.
+* Use emotion data to select turns. Try restricting to each of the V/A quadrants and do this analysis again.
+* Try checking for other types of entrainment, although I want to stay with global convergence for now because we have results from Switchboard to compare them with.
+
+Should I be using a simple 2-tailed T-test or the more complex linear model from the dialogue act paper?
