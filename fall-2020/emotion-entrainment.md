@@ -5,6 +5,7 @@
 My next steps are:
 * Finish the remaining missing entrainment measures (there were some technical hurdles on global proximity and synchrony).
 * Investigate whether emotion prediction techniques can be used to fill in missing emotion data for analysis, in the same way that dialogue act prediction techniques added more data for analysis in that other paper. 
+* Can we do entrainment analysis on discrete emotion annotation values? There are the older emotion annotations and that Switchboard dataset with more general positive/negative sentiments.
 
 ---
 
