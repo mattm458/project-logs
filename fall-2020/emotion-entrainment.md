@@ -2,6 +2,39 @@
 
 ## Project Log
 
+
+**Other emotion dataset analysis**
+
+I spent a while working with the switchboard-sentiment corpus but unfortunately was unable to produce anything worthwhile with it yet. I believe this is because of a difference in how each project annotates emotion. When we do it, it is based on our turn divisions, and the annotator is only listening to a single speaker. In switchboard-sentiment, a sentiment annotation can apply to several turns across both speakers. In fact, the average sentiment annotation applies to about 3.3 turns. This makes it difficult to do the same kind of turn-based entrainment measurement we were doing to our corpus: adjacent turns are often covered by the same annotation, even though the paper acknowledges that there could be disagreements among turns within an annotation. Because of this, I believe my current attempts at looking for entrainment in this dataset are not very accurate. Some outstanding questions:
+
+* I feel this comparative analysis would be useful, but is it useful enough to keep investing so much time into?
+* Is it worth trying to salvage the switchboard sentiment corpus, or should I try others?
+* What other datasets should I look into?
+
+**Continuing work on our emotion dataset**
+
+I did an analysis of session-level proximity in the style of the Levitan and Hirschberg paper and was unable to find a significant difference between a speaker's emotional state and their partner's versus the emotional state of speakers in sessions with whom they did not speak. I am working on an analysis of the difference between the speaker's emotional state and their partner's versus the emotional state of themselves in other conversations.
+
+In terms of next steps, I am considering the following enhancements to the analysis:
+
+* Currently, I am averaging all the emotions supplied by all annotators for a single turn. I should look into whether there are disagreements between annotators - how many and by how much.
+* Currently, I am averaging multiple emotions within a turn. I want to repeat the analysis but account for separate emotions, assuming they apply linearly along the turn. There is some justification for this (annotators were instructed to apply emotions in sequence).
+* Turns with missing emotions are not a concern and do not need to be automatically annotated. They represent turns with less than a second of speech.
+
+
+**Papers**
+
+Andreas gave me these:
+
+Youssef, A. Ben, Chollet, M., Jones, H., Sabouret, N., Pelachaud, C., & Ochs, M. (2015). Towards a Socially Adaptive Virtual Agent. International Conference on Intelligent Virtual Agents, 3–16. https://doi.org/10.1007/978-3-540-85483-8
+
+Acosta, J. C., & Ward, N. G. (2011). Achieving rapport with turn-by-turn, user-responsive emotional coloring. Speech Communication, 53(9), 1137–1148. https://doi.org/10.1016/j.specom.2010.11.006
+
+An updated table with all results is shown below:
+
+
+---
+
 My next steps are:
 * Finish the remaining missing entrainment measures (there were some technical hurdles on global proximity and synchrony).
 * Investigate whether emotion prediction techniques can be used to fill in missing emotion data for analysis, in the same way that dialogue act prediction techniques added more data for analysis in that other paper. 
