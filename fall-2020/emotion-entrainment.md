@@ -2,6 +2,40 @@
 
 ## Project Log
 
+I found out I had an outdated version of the dataset, so I had to redo some analysis to bring in the up-to-date data. Additionally, I found out there were multiple annotation attempts, so I needed to rework how I was ingesting the data from the psiturk database. New results can be found here:
+
+Session proximity with partner distance:
+
+![Session proximity with partner distance](img/aa-session-proximity-partner.png)
+
+Session proximity with self distance:
+
+![Session proximity with partner distance](img/aa-session-proximity-self.png)
+
+Turn proximity:
+
+![Session proximity with partner distance](img/aa-turn-proximity.png)
+
+Turn synchrony:
+
+![Session proximity with partner distance](img/aa-turn-synchrony.png)
+
+There was no significant evidence for convergence, either turn-level or session-level.
+
+To answer an older outstanding question regarding averaging annotations within turns: only about 7.4% of turns have more than one annotation. There is not a statistically significant difference between the distribution of all turn annotations and the distribution of averaged intra-turn annotations. I think maybe averaging them out is OK. I'm not sure what else I can do because annotators actually leave different amounts of annotations per turn. For example, one might say there is one emotion, while another says there is two or three. I can think of some ways of doing a more detailed analysis accounting for this, but I'm not sure it's worth it right now.
+
+I omitted the incomplete annotator's annotations from the dataset and it didn't seem to make much difference.
+
+Some outstanding paper questions/thoughts:
+
+* What is the best way to frame the outcome and introduction? How much of the 2011 Levitan/Hirschberg paper should I reference, and how much should I copy over?
+* Is this the first introduction of this dataset? I should probably spend a while describing it - how much, and in how much detail? Get some paragraphs from Andreas?
+* Still thinking about the missing annotations. I also had to omit a session due to technical reasons too.
+* Emotion entrainment or affective alignment? The latter seems like it's used more.
+* General framing questions - to discuss.
+
+
+---
 
 **Other emotion dataset analysis**
 
