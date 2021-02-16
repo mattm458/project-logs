@@ -2,6 +2,107 @@
 
 ## Project Log
 
+### Final corrected acoustic-prosodic entrainment
+This is where I spent most of my time this week. I think I finally ironed out the issues in my feature extraction pipeline (there were a few). Here are my results. I omitted speech rate for now - I will address that next.
+
+**Global Convergence**
+
+Feature| p (BMIC games) | p (CGC)
+-------|----------|----------
+Pitch (Mean)|0.0450|N.S.
+Pitch (Max)|0.0109|N.S.
+Intensity (Mean)|N.S.|0.01
+Shimmer|N.S.|0.03
+NHR|N.S.|0.002
+
+Results are not siginficant in the BMIC for conversations or for combined conversations and games.
+
+**Global Proximity**
+
+Feature| p other (BMIC games) | p other (BMIC conversations) | p self (BMIC games) | p self (BMIC conversations) | p self (CGC) | p other (CGC)
+-------|----------|----------|---------|--------|--------|--------
+Pitch (Mean)|0.3220|0.0332|0.1986|0.0168|N.S.|1.7 10<sup>-05</sup>
+Pitch (Max)|0.0685|0.1806|0.0338|0.1395|0.0008|N.S.
+Intensity (Mean)|0.0120|0.9265|0.0085|0.8401|6.1 10<sup>-06</sup>|0.003
+Intensity (Max)|0.0292|0.8648|0.0186|0.9560|0.0002|0.04
+Jitter|0.23780|0.1696|0.5590|0.3273|N.S.|4.8 10<sup>-05</sup>
+Shimmer|0.2083|0.4287|0.1165|0.5897|0.05|0.04
+NHR|0.7009|0.9475|0.4035|0.5870|0.007|0.009
+
+**Local Convergence**
+
+Feature| r (BMIC games) | p (BMIC games) | r (CGC) | p (CGC)
+-------|----------|----------|---------|--------
+Pitch (Mean)|0.0094|0.4599|-0.06|4.6 10<sup>-11</sup>
+Pitch (Max)|-0.0047|0.7099|-0.05|4.9 10<sup>-08</sup>
+Intensity (Mean)|0.0444|0.0004|-0.03|0.0001
+Intensity (Max)|0.0335|0.0079|-0.02|0.007
+Jitter|-0.0163|0.2298|0.03|0.002
+Shimmer|0.0090|0.5136|0.0008|N.S.
+NHR|0.0296|0.0184|0.007|N.S.
+
+BMIC conversations were only significant for two features:
+
+Feature | r (BMIC conversations) | p (BMIC conversations)
+--------|------------------------|-----------------------
+Shimmer|-0.0677|0.0028
+NHR|0.0442|0.0406
+
+
+**Local Proximity**
+
+Highly significant differences at turn changes vs. unrelated turns. Seen in BMIC and CGC for all features (pitch mean/max, intensity mean/max, jitter, shimmer, and NHR) for all session types (games and conversations)
+
+
+**Local Synchrony**
+
+Feature| r (BMIC games) | p (BMIC games) | r (CGC) | p (CGC)
+-------|----------|----------|---------|--------
+Pitch (Mean)|0.0323|0.0117|0.28|≈ 0
+Pitch (Max)|0.0017|0.8924|0.18|≈ 0
+Intensity (Mean)|-0.0089|0.4786|0.47|≈ 0
+Intensity (Max)|-0.0357|0.0047|0.50|≈ 0
+Jitter|0.0644|4.42603 10<sup>-6</sup>|0.23|≈ 0
+Shimmer|0.0349|0.0144|0.16|≈ 0
+NHR|0.0840|2.2935 10<sup>-11</sup>|0.23|≈ 0
+
+For BMIC conversations, only mean pitch was significant with r=-0.0561 and p=0.0103.
+
+
+**Takeaways and Questions**
+
+We had discussed this before but basically there is not much similarity between the BMIC and CGC. The only highly significant result I got was synchrony, which happened on every feature. Others were hit or miss, with some results exhibiting some significance.
+
+My questions:
+1. Does this look right?
+1. Are these results worth releasing by themselves?
+    - They are what they are: put them in the literature to state what we found.
+    - Contextualize them by comparing with other similar datasets: Fischer, Switchboard, CGC. Try to determine what is different about BMIC.
+
+**To do**
+Get checked transcripts from Andreas and use them to generate speaking rate.
+
+### Paper
+I'd like to talk about these in person.
+
+**Option 1: Short paper (INTERSPEECH, March 30, 4 pages)**
+Approx. 65% BMIC, 35% emotional entrainment analysis
+
+
+
+**Option 2: Longer paper (~6 pages)**
+BMIC, emotional entrainment analysis + acoustic/prosodic entrainment plus upcoming correlation work
+
+
+
+### Next steps
+* Writing the paper: will start this week
+* Correlating acoustic-prosodic features/entrainment with emotion features/entrainment: will continue this week
+* What is different about the BMIC and the CGC that yielded different entrainment results, despite having a partially similar format?
+* Attempt to recreate a conversation context paper using BMIC
+
+---
+
 I found out I had an outdated version of the dataset, so I had to redo some analysis to bring in the up-to-date data. Additionally, I found out there were multiple annotation attempts, so I needed to rework how I was ingesting the data from the psiturk database. New results can be found here:
 
 Session proximity with partner distance:
