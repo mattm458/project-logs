@@ -3,7 +3,7 @@
 ## Project Log
 
 ### Final corrected acoustic-prosodic entrainment
-This is where I spent most of my time this week. I think I finally ironed out the issues in my feature extraction pipeline (there were a few). Here are my results. I omitted speech rate for now - I will address that next.
+This is where I spent most of my time this week. I think I finally ironed out the issues in my feature extraction pipeline (there were a few). Here are my results. I omitted speech rate for now - I will address that next. The goal with this was to complete an analysis of acoustic/prosodic entrainment as a starting point to compare it with emotional entrainment. Since I think I'm done with the analysis, I will work on comparing them this week.
 
 **Global Convergence**
 
@@ -71,13 +71,14 @@ For BMIC conversations, only mean pitch was significant with r=-0.0561 and p=0.0
 
 **Takeaways and Questions**
 
-We had discussed this before but basically there is not much similarity between the BMIC and CGC. The only highly significant result I got was synchrony, which happened on every feature. Others were hit or miss, with some results exhibiting some significance.
+We had discussed this before but basically there is not much similarity between the BMIC and CGC, but it probably isn't very important. The only highly significant result I got was synchrony, which happened on every feature. Others were hit or miss, with some results exhibiting some significance.
 
 My questions:
 1. Does this look right?
 1. Are these results worth releasing by themselves?
     - They are what they are: put them in the literature to state what we found.
-    - Contextualize them by comparing with other similar datasets: Fischer, Switchboard, CGC. Try to determine what is different about BMIC.
+    - Contextualize them by comparing with other similar datasets: Fischer, Switchboard, CGC.
+1. BMIC was partially based on CGC. If it's important, what is different about the BMIC that could have led to differences in results?
 
 **To do**
 Get checked transcripts from Andreas and use them to generate speaking rate.
@@ -85,21 +86,19 @@ Get checked transcripts from Andreas and use them to generate speaking rate.
 ### Paper
 I'd like to talk about these in person.
 
-**Option 1: Short paper (INTERSPEECH, March 30, 4 pages)**
-Approx. 65% BMIC, 35% emotional entrainment analysis
+**Option 1: Short conference paper (INTERSPEECH, March 30, 4 pages)**
+Main goal is to introduce the BMIC. Present the emotion entrainment results as an example of a study we are doing with it, but do not include general acoustic/prosodic results yet (space concerns, also pending discussion of takeaways above.
 
-
-
-**Option 2: Longer paper (~6 pages)**
-BMIC, emotional entrainment analysis + acoustic/prosodic entrainment plus upcoming correlation work
-
+**Option 2: Longer conference paper (~6 pages)**
+Main goals are to introduce the BMIC and show work we are doing with it. Present the emotion entrainment results alongside acoustic/prosodic results (pending discussion of takeaways above). No set deadline, so time to work out kinks and do more with acoustic/prosodic-emotion entrainment correlations or whatever else we want to explore.
 
 
 ### Next steps
 * Writing the paper: will start this week
 * Correlating acoustic-prosodic features/entrainment with emotion features/entrainment: will continue this week
 * What is different about the BMIC and the CGC that yielded different entrainment results, despite having a partially similar format?
-* Attempt to recreate a conversation context paper using BMIC
+    * Get fisher/switchboard/CGC and redo analysis there? Compare results?
+* Attempt to recreate a conversation context paper using BMIC (longer term)
 
 ---
 
