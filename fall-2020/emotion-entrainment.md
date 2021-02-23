@@ -2,6 +2,67 @@
 
 ## Project Log
 
+I worked on some basic statistical analysis of emotional and acoustic-prosodic entrainment this week. Here are some general results that are representative of what I'm seeing:
+
+### General correlation
+
+First, here are correlations between acoustic-prosodic features and valence/arousal.
+
+|                  |      valence |    arousal |
+|:-----------------|-------------:|-----------:|
+| energy           | -0.0303773   |  0.221712  |
+| pitch_mean       | -0.00283354  |  0.0365282 |
+| pitch_std        |  0.0192358   | -0.0490368 |
+| pitch_min        | -0.0444853   |  0.0535081 |
+| pitch_max        |  0.00800468  |  0.030562  |
+| intensity_mean   |  0.0141265   |  0.471361  |
+| intensity_std    |  0.0380429   |  0.252555  |
+| intensity_min    | -0.0388018   |  0.14006   |
+| intensity_max    |  0.0265659   |  0.456163  |
+| jitter           | -0.000196673 | -0.168203  |
+| shimmer          | -0.00586974  | -0.127007  |
+| harmonicity_mean | -0.0186542   |  0.152183  |
+| harmonicity_std  | -0.0453533   |  0.0705816 |
+| harmonicity_min  | -0.0738522   | -0.0944758 |
+| harmonicity_max  |  0.0743613   |  0.179423  |
+| rate             |  0.0250662   |  0.117837  |
+
+Only arousal appears to have any kind of direct correlation with acoustic-prosodic features, and even then it is pretty weak except for intensity mean and max.
+
+
+### Movement correlation
+
+I wanted to see if acoustic-prosodic features move in tandem with valence and arousal. Using an approach similar to determining synchrony, I computed the difference across turns for both emotion and acoustic-prosodic features. These are the Pearson's correlation coefficients for those differences.
+
+|                  |   valence_r |   valence_p |   arousal_r |    arousal_p |
+|:-----------------|------------:|------------:|------------:|-------------:|
+| energy           |  0.0241558  | 0.374099    |   0.214925  | 1.23651e-15  |
+| pitch_mean       | -0.022234   | 0.413306    |  -0.0229985 | 0.397427     |
+| pitch_std        |  0.048068   | 0.0768199   |  -0.0307456 | 0.257888     |
+| pitch_min        | -0.075271   | 0.00555166  |  -0.0105636 | 0.697539     |
+| pitch_max        |  0.0246529  | 0.364345    |   0.0280712 | 0.301632     |
+| intensity_mean   |  0.112274   | 3.4183e-05  |   0.548947  | 1.45374e-107 |
+| intensity_std    |  0.097231   | 0.000336278 |   0.299949  | 1.36997e-29  |
+| intensity_min    |  0.00458931 | 0.865921    |   0.15442   | 1.09429e-08  |
+| intensity_max    |  0.113881   | 2.63e-05    |   0.53805   | 1.30076e-102 |
+| jitter           | -0.00556309 | 0.837832    |  -0.109768  | 5.10892e-05  |
+| shimmer          | -0.0334022  | 0.218993    |  -0.0617459 | 0.0229782    |
+| harmonicity_mean | -0.0101824  | 0.707943    |   0.0605966 | 0.025655     |
+| harmonicity_std  | -0.0188743  | 0.487402    |   0.0290278 | 0.28545      |
+| harmonicity_min  | -0.0847418  | 0.00178856  |  -0.135748  | 5.23705e-07  |
+| harmonicity_max  |  0.0621771  | 0.0220382   |   0.187126  | 3.76287e-12  |
+| rate             |  0.0357861  | 0.152493    |   0.157466  | 2.39999e-10  |
+
+
+Takeaways:
+* Change in arousal are much more strongly correlated with change in acoustic-prosodic features than movements in valence.
+* Change in energy, mean intensity, intensity std, and intensity max are strongly linearly correlated with arousal. Change in speaking rate and max harmonicity are weakly linearly correlated with arousal. In addition, jitter is somewhat negatively correlated with arousal.
+* In contrast, the only acoustic-prosodic features that change alongside valence are mean and max intensity, but with a weak linear correlation (approx. 0.11).
+
+In general, features for arousal make sense to me. But because there are so few acoustic-prosodic features whose changes correlate with change in valence, I wonder what else could be behind it. Maybe lexical features?
+
+---
+
 ### Final corrected acoustic-prosodic entrainment
 This is where I spent most of my time this week. I think I finally ironed out the issues in my feature extraction pipeline (there were a few). Here are my results. I omitted speech rate for now - I will address that next. The goal with this was to complete an analysis of acoustic/prosodic entrainment as a starting point to compare it with emotional entrainment. Since I think I'm done with the analysis, I will work on comparing them this week.
 
