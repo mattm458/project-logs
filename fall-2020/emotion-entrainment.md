@@ -2,6 +2,36 @@
 
 ## Project Log
 
+### Lexical Entrainment
+
+I am seeing some promising initial results with lexical entrainment with BMIC that mirrors GME from Andreas's paper. For this week, I focused on the perplexity metric, and followed the procedure detailed in the paper: train a trigram language model for each speaker's lemmatized utterances, use each model to calculate the perplexity of their partner's utterances (partner), then use each model to calculate the perplexity of utterances made by those they did not speak with (other).
+
+Using the above, the difference between partner and other perplexities is highly significant (3.4857 10^5) for games, but is insignificant for conversation, and insignificant for combined game and conversation data. My initial guess is to why this happens is that games involve collaborative back-and-forth discussions, often with game-specific terminology that both players reuse. Conversations tend to have more of a longer turn-taking structure, where one person spends time answering the prompt individually while the other listens before they switch roles. I guess if this is true then broadly speaking, it might be that having a storyteller/listener involves less lexical entrainment than having a goal-oriented problem-solving conversation.
+
+I am going to continue with other lexical entrainment metrics, and also try to find a positive correlation between emotional entrainment and lexical entrainment.
+
+
+### Acoustic-prosodic work with CGC
+This is starting to concern me a little. I was partially unable to reproduce the 2011 paper's results with my own extracted features or the preprocessed features Andreas sent me. It's possible some of this has to do with the different structure of the data (it looks similar, but there are a few differences in how it is ordered and how sessions are structured), but I went through a couple of revisions and am still getting different results.
+
+As an example, I chose to focus on synchrony because that was a major source of divergence between BMIC and 2011 CGC. Here are the results:
+
+Feature| r (BMIC games) | p (BMIC games) | r (CGC 2011) | p (CGC 2011) | r (CGC Matt) | p (CGC Matt)
+-------|----------|----------|---------|--------|---------|--------
+Pitch (Mean)|0.0323|0.0117|0.28|≈ 0|-0.0122|0.4792
+Pitch (Max)|0.0017|0.8924|0.18|≈ 0|0.0100|0.5609
+Intensity (Mean)|-0.0089|0.4786|0.47|≈ 0|0.3217|1.2290 10<sup>-82</sup>
+Intensity (Max)|-0.0357|0.0047|0.50|≈ 0|0.2802|2.5090 10<sup>-62</sup>
+Jitter|0.0644|4.42603 10<sup>-6</sup>|0.23|≈ 0|0.0831|3.6349 10<sup>-6</sup>
+Shimmer|0.0349|0.0144|0.16|≈ 0|0.0066|0.7155
+NHR|0.0840|2.2935 10<sup>-11</sup>|0.23|≈ 0|0.0896|1.8284 10<sup>-7</sup>
+
+Basically what I'm seeing is that, while results are closer in significance to the original study, not all features are significant. Additionally, where there is a significant linear correlation, it is not as positive a correlation as the original analysis.
+
+I think the fact that I'm seeing some additional significance is good, and I feel like I should focus on some of the metrics that aren't as significant (there could be differences in how I'm calculating them). I will try to pair with Andreas again, and maybe there are files left over from the original 2011 analysis I can look at.
+
+---
+
 I worked on some basic statistical analysis of emotional and acoustic-prosodic entrainment this week. Here are some general results that are representative of what I'm seeing:
 
 ### General correlation
