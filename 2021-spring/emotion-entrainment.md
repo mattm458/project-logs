@@ -1,5 +1,9 @@
 # Emotion Entrainment Log
 
+## Highlights for this week
+* Revisited old code, revised to make it more similar to the final B-MIC analysis code.
+* Evaluated summary synchrony and local proximity on acoustic-prosodic features separately for positive and negative V/A
+
 Starting a new log because the last one got overloaded with general entrainment work on B-MIC.
 
 Some improvements since last time:
@@ -7,14 +11,96 @@ Some improvements since last time:
 * Turn-level emotion entrainmet is computed by comparing the mean of each of the 3 adjacent emotion annotations. If all 3 annotators left 1 annotation for a whole turn, then it is simply the mean of those 3 annotations. However, if an annotator left more than one emotion annotation, only the first/last annotation as appropriate is incorporated into the mean. This didn't make a huge difference in practice.
 * Overlapping turns are skipped as they were in the original B-MIC analysis.
 
-## Global Entrainment
+## Emotion/AP Distance Correlates
+This section examines the difference between emotions and acoustic-prosodic features across turn exchanges. At turn exchanges where there is both an emotion annotation and a/p annotation for both speakers, we compute the difference of the emotion annotation and the difference of the a/p feature and compare them with Pearsons's correlation coefficient.
+
+### Games
+For game sessions, the difference in arousal is positively correlated with the difference in mean and max intensity, mean pitch, NHR, and speaking rate. The difference in valence is only positively correlated with a difference in max pitch.
+|                | Valence r             | p                   | dof | Arousal r              | p                      |
+|----------------|-----------------------|---------------------|-----|------------------------|------------------------|
+| Mean intensity | -0.008063929987601543 | 0.8101473338583689  | 889 | 0.2967219569572294     | **1.5092739144479908e-19** |
+| Max intensity  | -0.00900836135001011  | 0.788412217989601   | 889 | 0.2737820782753171     | **9.12746828814226e-17**   |
+| Mean pitch     | 0.08715281692638693   | **0.00928670057727018** | 889 | 0.06750662849393714    | **0.04407434737947286**    |
+| Max pitch      | 0.027720094933604816  | 0.40882314052579516 | 889 | -0.0397720654667957    | 0.23589243561240097    |
+| Jitter         | 0.01154519617893882   | 0.730881093678039   | 889 | 0.05411359598276809    | 0.10668432458930513    |
+| Shimmer        | 0.006401052194624063  | 0.8487643061586664  | 889 | -0.0017198304047841837 | 0.9591379411329057     |
+| NHR            | 0.008737263854195432  | 0.7946352444423297  | 889 | 0.06594759059915516    | **0.04920833723355125**    |
+| Rate           | 0.045180750096295706  | 0.17808822918116893 | 889 | 0.09975770328294557    | **0.002888979917956301**   |
+
+### Conversations
+There is no correlation between emotion difference and A/P differences at turn exchanges except for arousal and mean intensity (r=0.12351237225358844, p=0.03853251074475086, dof=280)
+
+## Extreme emotion value entrainment
+In this section, we examine the effect a speaker's emotional state has on his or her partner's entrainment behavior. We examine the emotion values in the first turn at turn exchanges, filtering out turn exchanges where the value does not pass a threshold value. The partner's emotional state is not considered.
+
+### Similarity
+#### Games
+|                | Valenece >= 0 t | p      | dof  | Valence < 0 r | p     | dof |   | Arousal >= 0 t | p      | dof  | Arousal < 0 r | p       | dof |
+|----------------|-----------------|--------|------|---------------|-------|-----|---|----------------|--------|------|---------------|---------|-----|
+| Intensity mean |                 | NS     |      |               | NS    |     |   | -3.32          | 0.0009 | 1164 | 4.09          | 4.73e-5 | 835 |
+| Intensity max  | -3.43           | 0.0006 | 1005 |               | NS    |     |   | -5.10          | 3.91   | 1164 |               | NS      |     |
+| Pitch mean     |                 | NS     |      |               | NS    |     |   |                | NS     |      |               | NS      |     |
+| Pitch max      |                 | NS     |      |               | NS    |     |   |                | NS     |      |               | NS      |     |
+| Jitter         | -2.05           | 0.04   | 912  |               | NS    |     |   |                | NS     |      | -2.043        | 0.041   | 777 |
+| Shimmer        |                 | NS     |      |               | NS    |     |   |                | NS     |      |               | NS      |     |
+| NHR            |                 | NS     |      |               | NS    |     |   |                | NS     |      |               | NS      |     |
+| Rate           |                 | NS     |      |        2.38   | 0.018 | 994 |   | 2.76           | 0.0059 | 1164 |               | NS      |     |
+
+#### Conversations
+|                | Valenece >= 0 t | p     | dof | Valence < 0 r | p       | dof |   | Arousal >= 0 t | p      | dof | Arousal < 0 r | p     | dof |
+|----------------|-----------------|-------|-----|---------------|---------|-----|---|----------------|--------|-----|---------------|-------|-----|
+| Intensity mean |                 | NS    |     |               | NS      |     |   |                | NS     |     |               | NS    |     |
+| Intensity max  | -2.07           | 0.039 | 338 | -3.49         | 0.00057 | 278 |   | -3.11          | 0.0020 | 310 | -2.54         | 0.012 | 306 |
+| Pitch mean     |                 | NS    |     |               | NS      |     |   | 2.44           | 0.015  | 308 |               | NS    |     |
+| Pitch max      |                 | NS    |     | 2.02          | 0.044   | 276 |   |                | NS     |     |               | NS    |     |
+| Jitter         |                 | NS    |     |               | NS      |     |   |                | NS     |     |               | NS    |     |
+| Shimmer        |                 | NS    |     |               | NS      |     |   |                | NS     |     |               | NS    |     |
+| NHR            |                 | NS    |     |               | NS      |     |   |                | NS     |     | -2.03         | 0.043 | 305 |
+| Rate           | -2.00           | 0.046 | 338 |               | NS      |     |   |                | NS     |     |               | NS    |     |
+
+### Synchrony
+#### Games
+For games, there doesn't appear to be a major difference in AP entrainment between positive and negative emotion values. Slight entrainment on jitter is present when valence < 0 and arousal >= 0, and there is no evidence for shimmer when arousal > 0. Entrainment on NHS is only present for arousal.
+
+|                | Valenece >= 0 r | p        | dof  | Valence < 0 r | p       | dof |   | Arousal >= 0 r | p       | dof  | Arousal < 0 r | p        | dof |
+|----------------|-----------------|----------|------|---------------|---------|-----|---|----------------|---------|------|---------------|----------|-----|
+| Intensity mean | 0.19            | 5.42e-10 | 1005 | 0.12          | 0.00028 | 994 |   | .11            | 0.00015 | 1164 | 0.14          | 3.41e-05 | 835 |
+| Intensity max  | 0.14            | 5.663-06 | 1005 | 0.09          | 0.0047  | 994 |   | 0.09           | 0.0024  | 1164 | 0.10          | 0.0025   | 835 |
+| Pitch mean     |                 | NS       |      |               | NS      |     |   |                | NS      |      |               | NS       |     |
+| Pitch max      |                 | NS       |      |               | NS      |     |   |                | NS      |      |               | NS       |     |
+| Jitter         |                 | NS       |      | 0.08          | 0.011   | 952 |   | 0.07           | 0.018   | 1087 |               | NS       |     |
+| Shimmer        | 0.07            | 0.04     | 903  | 0.07          | 0.042   | 951 |   |                | NS      |      | 0.09          | 0.014    | 772 |
+| NHR            |                 | NS       |      |               | NS      |     |   | 0.09           | 0.0037  | 1162 | 0.11          | 0.0015   | 829 |
+| Rate           |                 | NS       |      |               | NS      |     |   |                | NS      |      |               | NS       |     |
+
+#### Conversations
+Conversations show significant differences between positive and negative emotional values. When valence >= 0, there is evidence for synchrony over intensity max and pitch mean. When arousal >= 0, there is evidence for synchrony over intensity mean and max and mean pitch. There is no evidence for synchrony with negative valence or arousal.
+
+|                | Valenece >= 0 r | p     | dof | Valence < 0 r | p  | dof |   | Arousal >= 0 r | p      | dof | Arousal < 0 r | p  | dof |
+|----------------|-----------------|-------|-----|---------------|----|-----|---|----------------|--------|-----|---------------|----|-----|
+| Intensity mean |                 | NS    |     |               | NS |     |   | 0.18           | 0.0017 | 310 |               | NS |     |
+| Intensity max  | 0.11            | 0.043 | 338 |               | NS |     |   | 0.13           | 0.026  | 310 |               | NS |     |
+| Pitch mean     | 0.13            | 0.018 | 337 |               | NS |     |   | 0.16           | 0.0040 | 308 |               | NS |     |
+| Pitch max      |                 | NS    |     |               | NS |     |   |                | NS     |     |               | NS |     |
+| Jitter         |                 | NS    |     |               | NS |     |   |                | NS     |     |               | NS |     |
+| Shimmer        |                 | NS    |     |               | NS |     |   |                | NS     |     |               | NS |     |
+| NHR            |                 | NS    |     |               | NS |     |   |                | NS     |     |               | NS |     |
+| Rate           |                 | NS    |     |               | NS |     |   |                | NS     |     |               | NS |     |
+
+## Global Emotion Entrainment
 
 ### Proximity
+
+#### Partner vs. other distance
+For valence, partners are significantly more similar to one another than to others in games (t=3.8464652335977143, p=0.00035984515799359436, dof=47) and conversations (t=2.0910731874299846, p=0.04481099918776943, dof=31). There is no significant difference between partners and others for arousal.
+
+#### Partner vs self distance
+For valence, partners are significantly more similar to one another than to themselves in games (t=3.62211689045235, p=0.0007145391979325383, dof=47) and conversations (t=2.973186033431553, p=0.0056599846403571335). For arousal, partners are more similar to one another only in games (t=2.016626883693224, p=0.04946831753014236, dof=47)
 
 ### Convergence
 There is only weakly significant global divergence in arousal for games. t=-2.623045586392091, p=0.015203616417768481, dof=23.
 
-## Local Entrainment
+## Local Emotion Entrainment
 
 ### Proximity
 At turn exchanges, speakers are more similar to their partner at turn exchanges than they are to their partner at other random turns in the session for every measure except arousal in conversations.
