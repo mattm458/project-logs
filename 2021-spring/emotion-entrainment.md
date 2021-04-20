@@ -1,6 +1,406 @@
 # Emotion Entrainment Log
 
-## Highlights for this week
+## 2021/4/20
+### Is there a turn-level linear relationship between a speaker's emotional state and their partner's utterances?
+"I have a high emotional valence. Does that mean my partner has high shimmer?"
+
+Games summary: There is a negative linear relationship between valence and mean/max intensity and a positive linear relationship between arousal and mean/max intensity.
+
+Conversations summary: There may be a positive relationship between valence and max intensity.
+
+	- Games
+		- Valence
+			- Mean intensity: Yes, negative. r=-0.19, p=8.53e-9, dof=904
+			- Max intensity: Yes, negative.  r=-0.19, p=3.92e-9, dof=904
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No (p=0.013 but fails permutation test)
+			- Speaking rate: No
+		- Arousal
+			- Mean intensity: Yes, positive. r=0.19, p=8.29e-9, dof=904
+			- Max intensity: Yes, positive. r=0.19, p=1.42e-8, dof=904
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+	- Conversations
+		- Valence
+			- Mean intensity: No (p=0.02 but fails permutation test)
+			- Max intensity: Maybe. r=0.15, p=0.011, dof=285
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Arousal
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+
+### Is there a turn-level linear relationship between a speaker's emotional state and their partner distance?
+"I have a high emotioanl valence. Does that mean my partner is very similar to me in shimmer?"
+
+Games summary: No such relationship exists for valence. However, for arousal, there are positive relationships for mean intensity, jitter, and shimmer partner distance.
+
+Conversations summary: no such relationship exists for valence. However, for arousal, there is a positive relationship for NHR.
+
+	- Games
+		- Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Arousal
+			- Mean intensity: Yes, positive. r=0.12, p=0.00027, dof=904
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: Yes, positive. r=0.11, p=0.00091, dof=891
+			- Shimmer: Yes, positive. r=0.12, p=0.00057, dof=889
+			- NHR: No
+			- Speaking rate: No
+	- Conversations
+		- Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Arousal
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: Yes, positive. r=0.15, p=0.0090, dof=285
+			- Speaking rate: No
+			
+			
+### Is there a turn-level linear relationship between a speaker's emotional state and the distance between their utterance and their partner's utterance?	
+"I have a high emotional valence. Does that mean my partner and I are close to each other in shimmer?"
+
+Games summary: No such relationship exists for valence. However, for arousal, there are positive relationships for mean intensity, jitter, and shimmer. This means that a high arousal is correlated with close proximity in mean intensity, jitter, and shimmer.
+
+Conversations summary: no such relationship exists for valence. However, for arousal, there is a positive relationship for NHR.
+
+	- Games
+		- Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Arousal
+			- Mean intensity: Yes, positive. r=0.12, p=0.00027, dof=904
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: Yes, positive. r=0.11, p=0.00091, dof=891
+			- Shimmer: Yes, positive. r=0.12, p=0.00057, dof=889
+			- NHR: No
+			- Speaking rate: No
+	- Conversations
+		- Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Arousal
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: Yes, positive. r=0.15, p=0.0090, dof=285
+			- Speaking rate: No
+	
+### Is there a turn-level linear relationship between a speaker's positive/negative emotional states and their partner's utterances?
+"Does a positive valence correlate with my partner's shimmer differently than a negative valence?"
+
+Games summary: Positive valence does not correlate with partner feature values. However, negative valence correlates negatively with mean and max intensity. Positive arousal may positively correlate with mean intensity, while negative arousal may poisitively correlate with mean/max intensity and speaking rate.
+
+Conversations summary: Positive valence does not correlate with partner feature values. However, negative valence correlates positively with mean and max intensity. Positive arousal does not correlate with partner feature values, but negative arousal correlates with max pitch and may correlate with mean intensity and mean pitch.
+
+Conversations summary: no such relationship exists for valence. However, for arousal, there is a positive relationship for NHR.
+
+	- Games
+		- Positive Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Negative Valence
+			- Mean intensity: Yes, negative. r=-0.15, p=0.00083, dof=465
+			- Max intensity: Yes, negative. r=-0.16, p=0.00062, dof=465
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: Yes, negative. r=-0.12, p=0.0093, dof=465
+		- Positive Arousal
+			- Mean intensity: Maybe, positive. r=0.12, p=0.011, dof=479
+			- Max intensity: No (p=0.013 but failed permutation test)
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Negative Arousal
+			- Mean intensity: Maybe, positive. r=0.11, p=0.026, dof=424
+			- Max intensity: Maybe, positive. r=0.10, p=0.047, dof=424
+			- Mean pitch: No
+			- Max pitch: No (p=0.0095 but failed permutation test)
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: Maybe, negative. r=-0.10, p=0.034, dof=424
+	- Conversations
+		- Positive Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Negative Valence
+			- Mean intensity: Yes, positive. r=0.28, p=0.0018, dof=122
+			- Max intensity: Yes, positive. r=0.28, p=0.0021, dof=122
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Positive Arousal
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Negative Arousal
+			- Mean intensity: Maybe, positive. r=0.16, p=0.044, dof=153
+			- Max intensity: No
+			- Mean pitch: Maybe, positive. r=0.17, p=0.039, dof=153
+			- Max pitch: Yes, positive. r=0.22, p=0.0059, dof=153
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+
+### Is there a turn-level linear relationship between a speaker's positive/negative emotional states and the distance between their utterance and their partner's utterance?
+"Does a positive valence mean that my partner and I are closer to each other in shimmer than for negative valence?"
+
+Games summary: Positive valence does not correlate with partner differences. However, negative valence may correlate slightly negatively with max pitch difference. Positive arousal may positively correlate with mean intensity differences, while negative arousal may poisitively correlate with mean/max intensity and speaking rate differences.
+
+Conversations summary: Positive valence does not correlate with partner differences. However, negative valence may correlate negatively with jitter difference. Positive arousal does not correlate with partner differences. However, negative arousal may correlate negatively with max pitch difference.
+
+	- Games
+		- Positive Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No (p=0.029 but failed permutation test)
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Negative Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: Maybe, slightly negative. r=-0.10, p=0.04, dof=465
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Positive Arousal
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: Yes, negative. r=-0.13, p=0.0053, dof=479
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Negative Arousal
+			- Mean intensity: Yes, positive. r=0.12, p=0.0073, dof=424
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: Maybe, positive. r=0.10, p=0.041, dof=414
+			- NHR: No
+			- Speaking rate: No
+	- Conversations
+		- Positive Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Negative Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: Maybe, negative. r=-0.18, p=0.051, dof=121
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Positive Arousal
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Negative Arousal
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: Maybe, negative. r=-0.18, p=0.02, dof=153
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+
+### Is there a turn-level difference between partner distances originating from a speaker's positive emotional states and partner distances originating from a speaker's negative emotional states?
+
+"Are shimmer partner differences different when I have positive and negative valence?"
+
+Games summary: Starting with negative valence may have smaller differences in max intensity and shimmer. Starting with positive arousal has smaller differences in mean intensity and jitter, and may have smaller differences in shimmer and NHR.
+
+Conversations summary: There are no differences between starting with positive or negative valence. Starting with positive arousal may have smaller partner distances in shimmer and NHR.
+
+	- Games
+		- Valence
+			- Mean intensity: No
+			- Max intensity: Maybe, positive-led differences are larger. t=-1.89, p-0.059
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: Maybe, positive-led differences are larger. t=-2.29, p=0.022
+			- NHR: No
+			- Speaking rate: No
+		- Arousal
+			- Mean intensity: Yes, positive-led differences are smaller. t=2.67, p=0.0076
+			- Max intensity:
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: Yes, positive-led differences are smaller. t=3.58, p=0.00037
+			- Shimmer: Maybe, positive-led differences are smaller. t=2.35, p=0.019
+			- NHR: Maybe, positive-led differences are smaller. t=1.97, p=0.050
+			- Speaking rate: Maybe, positive-led differences are larger. t=2.38, p=0.017
+	- Conversations
+		- Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Arousal
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: Maybe, positive-led differences are smaller. t=1.90, p=0.058
+			- NHR: Maybe, positive-led differences are smaller. t=1.94, p=0.054
+			- Speaking rate: No
+
+### Is there a turn-level linear relationship between the difference between partner distance of emotional state and partner distance of speech features?
+
+"If my partner and I are close in valence, does that mean we are also close in shimmer?"
+
+Games summary: For valence partner distance, there is a slightly positive correlation with mean pitch partner distance. For arousal partner distance, there is a positive correlation with speaking rate and mean and max intensity. There may be a slightly positive correlation with mean pitch and NHR.
+
+Conversations summary: There are no relationships for valence partner distance. Arousal partner distance is positively correlated with mean intensity.
+
+	- Games
+		- Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: Yes, slightly positive. r=0.09, p=0.0093, dof=889
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Arousal
+			- Mean intensity: Yes, positive. r=0.30, p=1.51e-19, dof=889
+			- Max intensity: Yes, positive. r=0.27, p=9.13e-17, dof=889
+			- Mean pitch: Maybe, slightly positive. r=0.044, dof=889
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: Maybe, slightly positive. r=0.07, p=0.049, dof=889
+			- Speaking rate: Yes, slightly positive. r=0.09, p=0.0049, dof=889
+	- Conversations
+		- Valence
+			- Mean intensity: No
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+		- Arousal
+			- Mean intensity: Yes, positive. t=0.12, p=0.039, dof=280
+			- Max intensity: No
+			- Mean pitch: No
+			- Max pitch: No
+			- Jitter: No
+			- Shimmer: No
+			- NHR: No
+			- Speaking rate: No
+
+## 2021/04/13 Highlights
 * Revisited old code, revised to make it more similar to the final B-MIC analysis code.
 * Evaluated summary synchrony and local proximity on acoustic-prosodic features separately for positive and negative V/A
 
