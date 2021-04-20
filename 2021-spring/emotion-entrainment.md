@@ -1,6 +1,10 @@
 # Emotion Entrainment Log
 
 ## 2021/4/20
+
+I tried asking a bunch of different questions about emotional differences at turns not necessarily related to previous entrainment measures. Some of this may be a repeat of earlier metrics, but some are new.
+
+
 ### Is there a turn-level linear relationship between a speaker's emotional state and their partner's utterances?
 "I have a high emotional valence. Does that mean my partner has high shimmer?"
 
@@ -354,7 +358,6 @@ Conversations summary: There are no differences between starting with positive o
 			- Speaking rate: No
 
 ### Is there a turn-level linear relationship between the difference between partner distance of emotional state and partner distance of speech features?
-
 "If my partner and I are close in valence, does that mean we are also close in shimmer?"
 
 Games summary: For valence partner distance, there is a slightly positive correlation with mean pitch partner distance. For arousal partner distance, there is a positive correlation with speaking rate and mean and max intensity. There may be a slightly positive correlation with mean pitch and NHR.
