@@ -1,5 +1,87 @@
 # Emotion Entrainment Log
 
+## 2021/4/27
+
+This week I looked at whether speakers entrain on acoustic-prosodic features when experiencing similar emotions. This analysis differs from prior analysis in the following ways:
+
+* Emotions were averaged over turns by annotator. Multiple emotion annotations per turn were reduced to a single emotion.
+* Single turn-level emotions were normalized by annotator, then averaged together to produce a single valence/arousal value.
+* Averaged emotions were reduced to quadrants.
+	* 1 (↗): Positive valence, positive arousal
+	* 2 (↘): Positive valence, negative arousal
+	* 3 (↙): Negative valence, negative arousal
+	* 4 (↖): Negative valence, positive arousal
+* Turn pairs were selected based on emotional similarity. Instead of selecting adjacent turns, I found the nearest response turn uttered by the conversational partner in the same emotion quadrant as the prompt turn.
+
+As before, I am looking at this from a high-level perspective and not investigating individual sessions yet.
+
+
+![Emotion pairs](img/turn-emotion-pairs.png)
+
+### Synchrony
+(_p_ < 0.1 shown, * failed permutation test)
+
+| ↗ v+a+         | r (Game) | p (Game) | dof (Game) | r (Conv) | p (Conv) | dof (Conv) |
+|----------------|----------|----------|------------|----------|----------|------------|
+| Intensity Mean | 0.06     | 0.017    | 1396       |          |          |            |
+| Intensity Max  | 0.07     | 0.011    | 279        | 0.09     | 0.09     | 474        |
+
+| ↘ v+a-         | r (Game) | p (Game) | dof (Game) | r (Conv) | p (Conv)    | dof (Conv) |
+|----------------|----------|----------|------------|----------|-------------|------------|
+| Intensity Mean |          |          |            | 0.38     | 0.00011     | 94         |
+| Intensity Max  |          |          |            | 0.33     | 0.00095 (*) | 94         |
+| Shimmer        | -0.14    | 0.016    | 277        |          |             |            |
+
+| ↙ v-a-         | r (Game) | p (Game) | dof (Game) | r (Conv) | p (Conv) | dof (Conv) |
+|----------------|----------|----------|------------|----------|----------|------------|
+| Intensity Mean |          |          |            | 0.22     | 0.011    | 123        |
+| Rate           |          |          |            | -0.18    | -0.18    | 123        |
+
+| ↖ v-a+         | r (Game) | p (Game) | dof (Game) | r (Conv) | p (Conv)    | dof (Conv) |
+|----------------|----------|----------|------------|----------|-------------|------------|
+| Intensity Max  |          |          |            | 0.10     | 0.086       | 321        |
+| Pitch Mean     |          |          |            | -0.15    | 0.0057      | 321        |
+| Jitter         |          |          |            | 0.20     | 0.00015 (*) | 321        |
+| NHR            |          |          |            | 0.19     | 0.00054     | 321        |
+
+### Convergence
+| ↗              | r (Game) | p (Game)   | dof (Game) | r (Conv) | p (Conv) | dof (Conv) |
+|----------------|----------|------------|------------|----------|----------|------------|
+| Intensity Mean |          |            |            | 0.08     | 0.082    | 474        |
+| Intensity Max  |          |            |            | 0.08     | 0.072    | 474        |
+| Pitch Mean     | 0.09     | 0.0013 (*) | 1396       |          |          |            |
+| Jitter         | 0.07     | 0.0053     | 1396       |          |          |            |
+| Shimmer        | 0.06     | 0.015      | 1396       | -0.13    | 0.0058   | 474        |
+
+| ↘              | r (Game) | p (Game) | dof (Game) | r (Conv) | p (Conv)  | dof (Conv) |
+|----------------|----------|----------|------------|----------|-----------|------------|
+| Intensity Mean | 0.13     | 0.028    | 279        | -0.18    | 0.080     | 94         |
+| Intensity Max  | 0.16     | 0.0069   | 279        |          |           |            |
+| Pitch Mean     | 0.11     | 0.062    | 279        | 0.25     | 0.014 (*) | 94         |
+| NHR            | 0.11     | 0.061    | 279        | 0.17     | 0.091     | 94         |
+
+| ↙              | r (Game) | p (Game) | dof (Game) | r (Conv) | p (Conv) | dof (Conv) |
+|----------------|----------|----------|------------|----------|----------|------------|
+| Pitch Mean     | 0.18     | 0.0022   | 262        | 0.17     | 0.053    | 123        |
+| Pitch Max      |          |          |            | -0.19    | 0.037    | 123        |
+| Shimmer        |          |          |            | -0.22    | 0.016    | 123        |
+| NHR            | 0.14     | 0.020    | 262        |          |          |            |
+
+| ↖              | r (Game) | p (Game) | dof (Game) | r (Conv) | p (Conv) | dof (Conv) |
+|----------------|----------|----------|------------|----------|----------|------------|
+| Pitch Mean     | 0.05     | 0.088    | 1211       | 0.11     | 0.049    | 321        |
+| Jitter         | -0.06    | 0.053    | 1203       |          |          |            |
+| NHR            |          |          |            | 0.13     | 0.020    | 321        |
+
+### Similarity
+I am still trying to figure out how to compute this, since previous conceptions of turn-level similarity didn't depend on a variable like the emotional quadrant. Some concerns:
+
+1. Finding turns of the same quadrant not adjacent to the analyzed turn pair seems a little strange, since the turn pairs themselves aren't necessarily adjacent anyway.
+1. Finding turns of other quadrants seems like a good idea, but there is overlap between the valence/arousal value (for example, if I'm in quadrant 1 and look in quadrants 2, 3, and 4, then there is some overlapping valence and arousal on turns 2 and 4). Because it covers such a breadth of samples, there might be a kind of increased regression to the mean that we wouldn't see otherwise.
+1. Finding turns of the opposite quadrant also seems like a good idea, but in some cases there are so few turns in some quadrants (2 is especially rare) that it may not be worth it.
+
+I have tried numbers 1 and 2 above and seen widespread dissimilarity (i.e., the partner difference is much larger than the other distance) across most features in both games and conversations. This may or may not be useful, and I didn't want to spend too much time thinking about it until I figure out what the best way to compute it is.
+
 ## 2021/4/20
 
 I tried asking a bunch of different questions about emotional differences at turns not necessarily related to previous entrainment measures. Some of this may be a repeat of earlier metrics, but some are new.
@@ -290,7 +372,7 @@ Conversations summary: Positive valence does not correlate with partner differen
 			- Jitter: Maybe, negative. r=-0.18, p=0.051, dof=121
 			- Shimmer: No
 			- NHR: No
-			- Speaking rate: No
+			- Speaking rate: No**
 		- Positive Arousal
 			- Mean intensity: No
 			- Max intensity: No
@@ -313,7 +395,7 @@ Conversations summary: Positive valence does not correlate with partner differen
 ### Is there a turn-level difference between partner distances originating from a speaker's positive emotional states and partner distances originating from a speaker's negative emotional states?
 
 "Are shimmer partner differences different when I have positive and negative valence?"
-
+**
 Games summary: Starting with negative valence may have smaller differences in max intensity and shimmer. Starting with positive arousal has smaller differences in mean intensity and jitter, and may have smaller differences in shimmer and NHR.
 
 Conversations summary: There are no differences between starting with positive or negative valence. Starting with positive arousal may have smaller partner distances in shimmer and NHR.
@@ -329,10 +411,7 @@ Conversations summary: There are no differences between starting with positive o
 			- NHR: No
 			- Speaking rate: No
 		- Arousal
-			- Mean intensity: Yes, positive-led differences are smaller. t=2.67, p=0.0076
-			- Max intensity:
-			- Mean pitch: No
-			- Max pitch: No
+			- Mean intensity: Yes, p**
 			- Jitter: Yes, positive-led differences are smaller. t=3.58, p=0.00037
 			- Shimmer: Maybe, positive-led differences are smaller. t=2.35, p=0.019
 			- NHR: Maybe, positive-led differences are smaller. t=1.97, p=0.050
@@ -356,10 +435,7 @@ Conversations summary: There are no differences between starting with positive o
 			- Shimmer: Maybe, positive-led differences are smaller. t=1.90, p=0.058
 			- NHR: Maybe, positive-led differences are smaller. t=1.94, p=0.054
 			- Speaking rate: No
-
-### Is there a turn-level linear relationship between the difference between partner distance of emotional state and partner distance of speech features?
-"If my partner and I are close in valence, does that mean we are also close in shimmer?"
-
+**
 Games summary: For valence partner distance, there is a slightly positive correlation with mean pitch partner distance. For arousal partner distance, there is a positive correlation with speaking rate and mean and max intensity. There may be a slightly positive correlation with mean pitch and NHR.
 
 Conversations summary: There are no relationships for valence partner distance. Arousal partner distance is positively correlated with mean intensity.
