@@ -2,6 +2,8 @@
 
 ## 2021/4/27
 
+I've been working with Andreas to standardize the feature extraction process. From this point on, all features are extracted in line with the new process we developed.
+
 This week I looked at whether speakers entrain on acoustic-prosodic features when experiencing similar emotions. This analysis differs from prior analysis in the following ways:
 
 * Emotions were averaged over turns by annotator. Multiple emotion annotations per turn were reduced to a single emotion.
