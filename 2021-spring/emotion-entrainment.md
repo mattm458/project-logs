@@ -1,5 +1,12 @@
 # Emotion Entrainment Log
 
+## 2021/5/5
+Not much to report right now in terms of new metrics. Instead, I've been reworking my old tests with updated metric data that Andreas and I found, as well as with standardized turn exchanges. The results are in "emotion-entrainment-study.ods".
+
+It is mostly complete, except for a few technical quirks that need to be worked out:
+	* I realized Standardized non-adjacent turns aren't necessarily good to use for other distance here because a turn may not have emotion annotations, and would prevent it from being eligible. The danger here is that there won't be enough (~10) other turns for local similarity to average out the number. I'm going to make a separate set of baked-in random turn exchanges exclusively for use with emotion annotations.
+	* All Pearson results need to have the permutation test done, and significance needs to be updated with Benjamini-Hochberg
+
 ## 2021/4/27
 
 I've been working with Andreas to standardize the feature extraction process. From this point on, all features are extracted in line with the new process we developed.
