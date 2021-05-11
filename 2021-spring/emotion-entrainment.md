@@ -1,5 +1,36 @@
 # Emotion Entrainment Log
 
+## 2021/5/11
+
+I did an analysis of inter-annotator agreement.
+
+First, here is a visualization of the different annotators that I will include in any paper that comes from this. In order, they are CD, TL, VP, and their mean.
+
+![CD Emotion](img/emot-cd.png) ![TL Emotion](img/emot-tl.png) ![VP Emotion](img/emot-vp.png) ![Mean Emotion](img/emot-mean.png)
+
+I think I did this before but I couldn't find the older analysis. I look at how much annotators disagreed over the number of annotations per turn. For the most part, the majority of turns have 1 annotation. VP thought there were more annotations per turn than any of the other annotators.
+
+| Annotator      | Mean per turn | Max per turn | 1 per turn | >1 per turn | Turns |
+|----------------|---------------|--------------|------------|---------------|-------|
+| CD             | 1.03          | 3            | 97.07%    | 2.93%        | 4536  |
+| TL             | 1.123         | 3            | 88.35%    | 11.65%       | 4539  |
+| VP             | 1.270         | 4            | 74.75%    | 25.25%       | 4484  |
+
+Finally, I computed Krippendorff's alpha for the emotion annotations in a variety of situations that are relevant to the analysis we're doing. Specifically, those are:
+
+* A blanket averaging all annotations. This occurs fully or partially in global entrainment. In this case, I computed Krippendorff's alpha for all annotations.
+* Averaging emotions by turn per annotator. I do this in a few situations (the project work).
+* Agreement at the first and last emotions in a turn. This occurs in local entrainment measures.
+
+|                      | All  | Turn means | Turn ends |
+|----------------------|------|------------|-----------|
+| Valence              | 0.22 | 0.25       | 0.36      |
+| Arousal              | 0.18 | 0.26       | 0.36      |
+| Normalized Valence   | 0.25 | 0.30       | 0.39      |
+| Normalized Arousal   | 0.18 | 0.33       | 0.40      |
+
+The results are interesting. The highest inter-annotator agreement actually occurs for per-annotator normalized emotions at the beginning and ending of turns. This means that local entrainment measures should be happening in a situation with the highest agreement, and so should be the most reliable. Unfortunately averaging all emotions will be done in a way where they are averaged over the least agreement.
+
 ## 2021/5/5
 Not much to report right now in terms of new metrics. Instead, I've been reworking my old tests with updated metric data that Andreas and I found, as well as with standardized turn exchanges. The results are in "emotion-entrainment-study.ods".
 
