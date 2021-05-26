@@ -1,5 +1,21 @@
 # Emotion Entrainment Log
 
+## 2021/5/26
+I am continuing to work with Andreas on standardizing our feature extraction and experiment methodology. That is bleeding over into this entrainment work, so I am continuing to update my code as he and I improve the AP entrainment analysis.
+
+Some final brief thoughts on inter-annotator agreement, our methods of reconciling them, and how to move forward on a paper. I have a lot of experiments and results that I could write about, but this last piece of ambiguity has been preventing me from committing to anything yet. I'm curious if the below sounds good, and if it does, I don't have anything else standing in the way of finishing a paper.
+
+Based on an analysis of inter-annotator agreement, I think it's OK to move forward on a paper summarizing and contextualizing everything from this semester as long as we do the following:
+
+* When I do per-annotator normalization, I am normalizing on __all annotations they ever left__ regardless of whether we use them in analysis.
+* Decide on some form of normalization technique. Based on the inter-annotator agreement spreadsheet, z-score normalization results in the highest agreement (admittedly still relatively low). This is assuming there is some other method I haven't tried yet which works better. Z-score normalization centers the result, so that will have an impact on quadrants if I put them in the paper.
+* For global entrainment, __eliminate multi-turn annotations__. This will sidestep the issue of having to reconcile multiple annotations per turn, and should give us enough data.
+* For local entrainment, __keep multi-turn annotations__. Only use the mean of the last annotations (for prompts) and first annotations (for responses). This is what I've been doing already and seems to do OK, and I think thI can justify it.
+
+For local entrainment, __there are insufficient intra-session turn pairs__ for session-level analysis. I think we can only do summary statistics over the entire corpus.
+
+I think if we ultimately decide to get more annotations and/or replace our existing annotations, it won't have much effect on this current research. My guess is that expanded annotation would probably coincide with resumed data collection, so this would fit in with any other pre-expansion work we do. Post-expansion, we could probably do some work related to our improved annotation methods (if we improve them), and use it as a case study for the impact of inter-annotator agreement on studies.
+
 ## 2021/5/11
 
 I did an analysis of inter-annotator agreement.
